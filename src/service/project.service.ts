@@ -32,4 +32,15 @@ export class ProjectService {
 		project = await this.projectRepository.create(project);
 		return this.projectMapper.projectToProjectResponseDto(project);
 	}
+
+	public async update(id: string, projectRequestDto: ProjectRequestDto): Promise<ProjectResponseDto> {
+		let project: Project = await this.projectMapper.projectRequestDtoToProject(projectRequestDto);
+		project = await this.projectRepository.update(id, project);
+		return this.projectMapper.projectToProjectResponseDto(project);
+	}
+
+	public async delete(id: string): Promise<ProjectResponseDto> {
+		const project: Project = await this.projectRepository.delete(id);
+		return this.projectMapper.projectToProjectResponseDto(project);
+	}
 }

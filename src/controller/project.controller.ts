@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Res } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from "@nestjs/common";
 import { Response } from "express";
 import { ProjectService } from "../service/project.service";
 import { ProjectRequestDto } from "../model/dto/request/project.dto";
@@ -27,4 +27,15 @@ export class ProjectController {
 		response.set(HttpStatus.CREATED).send(result);
 	}
 
+	@Put(":id")
+	public async update(@Param() params: any, @Body() projectRequestDto: ProjectRequestDto, @Res() response: Response) {
+		const result = await this.projectService.update(params.id, projectRequestDto);
+		response.set(HttpStatus.OK).send(result);
+	}
+
+	@Delete(":id")
+	public async delete(@Param() params: any, @Res() response: Response) {
+		await this.projectService.delete(params.id);
+		response.set(HttpStatus.NO_CONTENT).send({});
+	}
 }
