@@ -8,6 +8,10 @@ export class StudentRepository {
 
 	public constructor(@InjectModel(Student.name) private readonly studentModel: Model<Student>) {}
 
+	public async find(student: Student): Promise<Student> {
+		return this.studentModel.findById(student._id).exec();
+	}
+
 	public async findById(id: string): Promise<Student> {
 		return this.studentModel.findById(id).exec();
 	}
