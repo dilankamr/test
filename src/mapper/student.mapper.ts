@@ -1,7 +1,9 @@
 import { Student } from "../model/schema/student";
 import { StudentResponseDto } from "../model/dto/response/student.dto";
 import { StudentRequestDto } from "../model/dto/request/student.dto";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class StudentMapper {
 
 	public static studentToStudentResponseDto(student: Student) {

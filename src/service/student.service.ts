@@ -20,8 +20,8 @@ export class StudentService {
 		return students.map(s => StudentMapper.studentToStudentResponseDto(s))
 	}
 
-	public async create(studentDto: StudentRequestDto): Promise<StudentResponseDto> {
-		let student: Student = StudentMapper.studentRequestDtoToStudent(studentDto);
+	public async create(studentRequestDto: StudentRequestDto): Promise<StudentResponseDto> {
+		let student: Student = StudentMapper.studentRequestDtoToStudent(studentRequestDto);
 		student = await this.studentRepository.create(student);
 		return StudentMapper.studentToStudentResponseDto(student);
 	}

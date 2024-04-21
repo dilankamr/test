@@ -21,8 +21,8 @@ export class StudentController {
 	}
 
 	@Post()
-	public async create(@Body() student: StudentRequestDto, @Res() response: Response) {
-		const result = await this.studentService.create(student);
+	public async create(@Body() studentRequestDto: StudentRequestDto, @Res() response: Response) {
+		const result = await this.studentService.create(studentRequestDto);
 		response.set(HttpStatus.CREATED).send(result);
 	}
 

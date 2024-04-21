@@ -7,6 +7,11 @@ import { Project, ProjectSchema } from "./model/schema/project";
 import { StudentController } from "./controller/student.controller";
 import { StudentService } from "./service/student.service";
 import { StudentRepository } from "./repository/student.repository";
+import { StudentMapper } from "./mapper/student.mapper";
+import { ProjectController } from "./controller/project.controller";
+import { ProjectService } from "./service/project.service";
+import { ProjectRepository } from "./repository/project.repository";
+import { ProjectMapper } from "./mapper/project.mapper";
 
 @Module({
 	imports: [
@@ -23,11 +28,16 @@ import { StudentRepository } from "./repository/student.repository";
 		])
 	],
 	controllers: [
-		StudentController
+		StudentController,
+		ProjectController
 	],
 	providers: [
 		StudentService,
-		StudentRepository
+		StudentRepository,
+		StudentMapper,
+		ProjectService,
+		ProjectRepository,
+		ProjectMapper
 	]
 })
 export class AppModule {}
